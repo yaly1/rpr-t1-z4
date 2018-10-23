@@ -2,7 +2,6 @@ package ba.unsa.etf.rpr.tut1;
 
 public class Student {
 
-
     boolean obrisan;
     private String ime, prezime;
     private int brIndeksa;
@@ -50,5 +49,9 @@ public class Student {
         return prezime +
                 " "  + ime +
                 " (" + brIndeksa + ')';
+    }
+
+    public boolean isObrisan() {
+        return obrisan;
     }
 }

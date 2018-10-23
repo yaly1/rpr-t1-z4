@@ -69,4 +69,11 @@ public class Predmet {
         return rez;
     }
 
+    public Student[] getNiz() {
+        return niz;
+    }
+
+    public int getBr() {
+        return br;
+    }
 }
