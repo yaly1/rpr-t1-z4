@@ -5,6 +5,7 @@ public class Predmet {
     private Student [] niz = null;
     private String naziv;
     private int sifra, maks, br;
+    boolean obrisan;
 
     public void setNaziv(String naziv) {
         this.naziv = naziv;
@@ -32,31 +33,37 @@ public class Predmet {
         this.maks = maks;
         niz = new Student[maks];
         br = 0;
+        obrisan = false;
     }
 
     public void brisi() {
+        if(obrisan) throw new IllegalArgumentException("Predmet je obrisan");
         naziv = "";
         sifra = 0;
         maks = 0;
         niz = null;
         br = 0;
+        obrisan = true;
     }
 
     public void upisi(Student s) {
-        if(s.obrisan) return;
+        if(maks == br) throw new IndexOutOfBoundsException("Predmet je popunjen");
+        if(s.obrisan) throw new IllegalArgumentException("Student je obrisan");
+        for(int i = 0; i < br; i++) if(niz[i].getBrIndeksa() == s.getBrIndeksa()) throw new IllegalArgumentException("Student vec postoji");
         if(br < maks)
             niz[br++] = s;
     }
 
     public void ispisi(Student s) {
-        if(br == 0) return;
+        if(br == 0) throw new IllegalArgumentException("Student nije ni upisan");
         for(int i = 0; i < br; i++)
-            if(niz[i] == s) {
+            if(niz[i].getBrIndeksa() == s.getBrIndeksa()) {
                 for(int j = i; j<br; j++)
                     niz[j] = niz[j+1];
                 br--;
                 return;
             }
+        throw new IllegalArgumentException("Student nije ni upisan");
     }
 
     @Override

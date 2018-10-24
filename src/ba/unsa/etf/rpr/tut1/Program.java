@@ -37,6 +37,6 @@ public class Program {
         niz[2].ispisi(s1);
         p3.brisi();
         System.out.println(niz[2]);
-
+        //Student.duplikati();
     }
 }
